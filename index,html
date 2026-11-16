@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>My Creative Gallery</h1>
+        <p>A collection of my designs and creative work</p>
+    </header>
+
+    <main class="gallery">
+        <img src="images/design1.jpg" alt="Design 1">
+        <img src="images/design2.jpg" alt="Design 2">
+        <img src="images/design3.jpg" alt="Design 3">
+        <img src="images/design4.jpg" alt="Design 4">
+    </main>
+
+    <div class="lightbox" id="lightbox">
+        <span id="close">&times;</span>
+        <img id="largeImage" src="" alt="Full size preview">
+    </div>
+
+    <script>
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.onclick = () => {
+                document.getElementById('largeImage').src = img.src;
+                document.getElementById('lightbox').style.display = 'flex';
+            };
+        });
+
+        document.getElementById('close').onclick = () => {
+            document.getElementById('lightbox').style.display = 'none';
+        };
+
+        document.getElementById('lightbox').onclick = e => {
+            if (e.target.id === 'lightbox') e.currentTarget.style.display = 'none';
+        };
+    </script>
+
+</body>
+</html>
